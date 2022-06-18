@@ -11,7 +11,12 @@ sistema deve ter a opção extrato.
 #include<stdio.h>
 #include<stdlib.h>
 int main (){
-	char nome[40][5]; char cpf[40]
+	char nome[40], cpf[40], tipo;
+	float saldo;
+	int i;
+	for (i = 0; i<5;i++){
+		
+	}
 	return 0; 
 	
 }
