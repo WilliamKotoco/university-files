@@ -9,7 +9,7 @@ int main()
     char nome[81], nomemaiusculo[81];
     printf("Digite o nome: ");
     scanf("%s", &nome);
-  
-    printf("\n %s", nomemaiusculo[81]);
+    strcpy(nomemaiusculo, toupper(nome));
+    puts(nomemaiusculo);
     return 0;
 }
