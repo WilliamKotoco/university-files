@@ -1,22 +1,37 @@
-// Escreva um algoritmo que leia uma string cpf[21] apenas com valores numéricos de um CPF(ex: 36813486211)
-// .Em seguida, formate essa string com pontos e traço, salvando seu conteúdo em uma nova string
-// cpfformatado[21] (ex: digitou-se 36813486211, então a formatação final deverá ser: 368.134.862-11).
 #include <stdio.h>
-#include <string.h>
+
 int main()
 {
     char cpf[21], cpfformatado[21];
-    printf("Digite o CPF, sem formatacao: ");
-    scanf("%s", &cpf);
-    for (int i = 0; i < strlen(cpf) + 2; i++)
+    int i = 0, j = 0;
+
+    printf("\nDigite um cpf: ");
+    scanf(" %[^\n]s", cpf);
+
+    while (cpf[i] != '\0')
     {
-        cpfformatado[i] = cpf[i];
-        if (i % 3 == 0 && i != 0)
+        if (i == 2 || i == 5)
         {
-            cpfformatado[i] = " . ";
+            cpfformatado[j] = cpf[i];
+            cpfformatado[j + 1] = '.';
+            i++;
+            j += 2;
+        }
+        else if (i == 8)
+        {
+            cpfformatado[j] = cpf[i];
+            cpfformatado[j + 1] = '-';
+            i++;
+            j += 2;
+        }
+        else
+        {
+            cpfformatado[j] = cpf[i];
+            i++;
+            j++;
         }
     }
-    printf("CPF formatado: %s", cpfformatado);
-    // ver pilha acho que ajudaria
+
+    printf("\nCpf modificado: %s", cpfformatado);
     return 0;
 }
