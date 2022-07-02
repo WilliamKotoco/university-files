@@ -9,11 +9,24 @@ a cada aluno. */
 #define questoes 3
 int main()
 {
-    char matriz[alunos][questoes], gabarito = "abcdabcda";
-    for (int i = 0; i < alunos; i++){
-        for (int j = 0; j < questoes; j++){
-            printf("Digite a alternativa correta: a,b, ou d ");
+    char matriz[alunos][questoes], gabarito[questoes], contador = 0,
+                                                       acertos[alunos];
+    for (int i = 0; i < questoes; i++)
+    {
+        printf("Digite a resposta da %d questao: ", i);
+        scanf("%c", &gabarito[i]);
+    }
+    for (int i = 0; i < alunos; i++)
+    {
+        for (int j = 0; j < questoes; j++)
+        {
+            printf("Digite a alternativa correta: a,b, c ou d ");
             scanf("%c", &matriz[i][j]);
+            if (matriz[i][j] == gabarito[i])
+            {
+                contador++;
+            }
+            acertos[i] = contador;
         }
     }
     return 0;
