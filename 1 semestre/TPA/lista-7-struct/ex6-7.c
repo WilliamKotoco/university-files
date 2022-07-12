@@ -5,7 +5,7 @@
 // seguir:
 #include <stdio.h>
 #define dias 6
-#define qtdprod 2 // mudar para 20
+#define qtdprod 20 // mudar para 20
 struct produto
 {
     char nome[40];
