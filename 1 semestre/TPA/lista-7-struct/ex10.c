@@ -6,8 +6,7 @@
 // relatório em que cada registro deve aparecer em uma linha. Além disso, o programa deve exibir o total a
 // recebe
 #include <stdio.h>
-#define clientes 2
-#define preco_20_horas 35
+#define clientes 20
 struct cliente
 {
     char nome[40];
@@ -17,7 +16,8 @@ struct cliente
 };
 int main()
 {
-    float preco = 0, total = 0;
+    float preco[clientes], total = 0;
+    float preco_20_horas = 35;
     struct cliente cliente[clientes];
     for (int i = 0; i < clientes; i++)
     {
@@ -34,26 +34,37 @@ int main()
         setbuf(stdin, NULL);
 
         printf("\n  Digite S se tem pagina, qualquer outra coisa se nao tiver: ");
-        scanf("%c", &cliente[i].pagina);
+        scanf(" %c", &cliente[i].pagina);
     }
     for (int i = 0; i < clientes; i++)
     {
         // calculo das horas
-        if (cliente[i].pagina == "s" || cliente[i].pagina == "S")
-        {
-            preco = preco + 40;
-        }
+
         if (cliente[i].horas <= 20)
         {
-            preco = preco + preco_20_horas;
+            if (cliente[i].pagina == 's' || cliente[i].pagina == 'S')
+            {
+                preco[i] = preco_20_horas + 40;
+            }
+            else
+            {
+                preco[i] = preco_20_horas;
+            }
         }
-        else
+        else if (cliente[i].horas > 20)
         {
-            preco = preco + preco_20_horas + (2.5 * (preco_20_horas - cliente[i].horas));
+            if (cliente[i].pagina == 's' || cliente[i].pagina == 'S')
+            {
+                preco[i] = 40 + preco_20_horas + (2.5 * (cliente[i].horas - 20));
+            }
+            else
+            {
+                preco[i] = preco_20_horas + (2.5 * (cliente[i].horas - 20));
+            }
         }
-        total = total + preco;
-        printf("\n %s pagara %2.f ", cliente[i].nome, preco);
-        preco = 0;
+
+        total = total + preco[i];
+        printf("\n %s pagara %2.f ", cliente[i].nome, preco[i]);
     }
     printf("\n Total que a loja recebe: %2.f ", total);
 
