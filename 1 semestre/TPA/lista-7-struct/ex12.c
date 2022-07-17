@@ -9,17 +9,17 @@ int main()
         int medidas[4];
     };
     struct modelo_retangulo retangulo;
-    int valores_repetidos = 0, area;
+    int valores_repetidos = 0, area, i, j;
 
-    for (int i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++)
     {
         printf("Digite as medidas: ");
-        scanf("%d", &retangulo.medidas[i]);
+        scanf(" %d", &retangulo.medidas[i]);
     }
     // checar se tem dois valores iguais
-    for (int i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++)
     {
-        for (int j = 0; j < 4; j++)
+        for (j = 0; j < 4; j++)
         {
             if (retangulo.medidas[i] == retangulo.medidas[j])
             {
@@ -35,18 +35,19 @@ int main()
     }
     else
     {
-        for (int i = 0; i < 4; i++)
+        for (i = 0; i < 4; i++)
         {
-            printf("\n LADO %d: %d", i, retangulo.medidas[i]);
-            for (int j = 0; j < 4; i++)
+            for (j = 0; j < 4; j++)
             {
                 if (retangulo.medidas[i] != retangulo.medidas[j])
                 {
-                    area = retangulo.medidas[i] * retangulo.medidas[j];
+                    area = retangulo.medidas[j] * retangulo.medidas[i];
+                    break;
                 }
             }
+            printf("\n LADO %d: %d", i, retangulo.medidas[i]);
         }
-        printf("A area eh de %d ", area);
+        printf("\n A area eh de %d ", area);
     }
     return 0;
 }
