@@ -7,7 +7,7 @@
 // (b) Ler um tempo t (em dias), calcular e mostrar o consumo total da residˆencia, e
 // os consumos relativos de cada eletrodom ́estico (consumo/consumo total) nesse
 // per ́ıodo de tempo. Apresente este  ́ultimo dado em porcentagem.
-#define qtd 3 // mudar para 10 depois
+#define qtd 10 // mudar para 10 depois
 #include <stdio.h>
 int main()
 {
