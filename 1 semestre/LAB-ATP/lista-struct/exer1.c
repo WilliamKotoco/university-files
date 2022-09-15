@@ -1,16 +1,18 @@
-#include<stdio.h>
-typdef struct horasmin{
+#include <stdio.h>
+typedef struct horasmin
+{
     int horas;
     int minutos;
-}
-int main(){
+} horamin;
+int main()
+{
     int min;
-    horamin horamin;
+    horamin horamins;
     printf("Digite o numero em minutos: ");
     scanf("%d", &min);
-    horamin.horas = min/60;
-    horamin.minutos = min % 60;
-    printf("\n Horas: %d", horamin.horas);
-    printf("\n Minutos: %d", horamin.minutos);
+    horamins.horas = min / 60;
+    horamins.minutos = min % 60;
+    printf("\n Horas: %d", horamins.horas);
+    printf("\n Minutos: %d", horamins.minutos);
     return 0;
 }
