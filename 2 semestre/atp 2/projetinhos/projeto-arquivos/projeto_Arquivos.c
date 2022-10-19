@@ -7,7 +7,6 @@ void adicionar_palavras(int, FILE *, FILE *);
 void palavras_anteriores(int, FILE *, FILE *);
 void escrever_palavras_restantes(FILE *, FILE *);
 void escrever_codigos(FILE *, FILE *);
-
 // A funÃ§Ã£o recebe como parametro o nome de um arquivo e apaga o conteudo prÃ©viamente escrito no mesmo.
 void limpa_arquivo(char nome_arquivo[100])
 {
@@ -25,6 +24,9 @@ int main()
     limpa_arquivo("linhas.dat");
     check(codigo, palavras);
     modificacao(linhas, codigo, palavras);
+    fclose(linhas);
+    fclose(palavras);
+    fclose(codigo);
 }
 
 void check(FILE *codigos, FILE *palavras)
