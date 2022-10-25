@@ -1,0 +1,23 @@
+Uma empresa fez uma pesquisa para saber se as pessoas gostaram ou nao de um dnovo produto lançado. Para isso, forneceu 
+o sexo do entrevistado e sua resposta (s ou n). Sabe-se que forma entrevistadas 10 pessoas. Faça um programa q:
+ - mostre o numero de pessoas q respondeu s
+ - mostre o numero de pessoas q respondeu n
+ - o numero de colheres q responderam s
+ - o numero de machos que responderam nao entre todos os high testosterone
+
+exer 2:
+Faça um prorama que preencha um vetor com 10 numeros inteiros e um segundo vetor com 5 numeros inteiros, calcule 
+e mostre dois vetores resultantes. O primeiro vetor resultante será composto pela soma de cada numero par do 
+primeiro vetor somado a todos os numeros do segundo vetor. O segundo vetor resultante será composto pela quantidade
+de divisores que cada numero impar do primeiro vetor tem no segundo vetor. O segundo vetor resultante
+
+exer 3:
+Crie um programa que:
+- receba o preco de 10 produtos e armazene-os em um vetor;
+- receba a quantidade estocada de cada um desses produtos, em 5 armazens diferentes, utilizando uma matriz.
+O programa deverá calcular e mostrar: 
+    - a qtd de protudos estocados em cada armazenen 
+    - a qtd de cada produto estocada em todos armazens juntos
+    - o preco do produto que possui maior estoque em um único armazen
+    - o menor estoque armazenado 
+    - o custo de cada armazen beleza ? ponto final, galera, obrigado, tamo junto, seman q vem deus q ver
