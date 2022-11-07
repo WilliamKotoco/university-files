@@ -8,16 +8,22 @@ int main()
     char frase[1024];
     scanf("%[^\n]s", frase);
     printf("\n %s", frase);
+
     remover_espacos(frase);
     printf("\n %s", frase);
 }
 void remover_espacos(char *str)
 {
-    int i;
-    while (str[i] != '\0')
+    int i, j, len = strlen(str);
+    for (i = 0; i < len; i++)
     {
         if (str[i] == ' ')
-            str[i] = str[i + 1];
-        i++;
+        {
+            for (j = i; j < len; j++)
+            {
+                str[j] = str[j + 1];
+            }
+            len--;
+        }
     }
 }
