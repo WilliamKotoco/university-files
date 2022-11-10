@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 const char *mais_economico(char *str, int *consumo);
+void qtd_consumo(char *str, int *consumo);
 int main()
 {
     int i, j, consumo[5];
@@ -16,7 +17,7 @@ int main()
         scanf("%d", &consumo[i]);
     }
     printf("o mais economico e o %s", mais_economico(carros, consumo));
-    // qtd_consumo(carros, consumo);
+     qtd_consumo(carros, consumo);
 }
 const char *mais_economico(char *str, int *consumo)
 {
