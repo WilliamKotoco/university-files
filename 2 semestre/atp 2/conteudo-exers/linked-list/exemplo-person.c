@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
 struct pessoa
 {
     int idade;
@@ -27,7 +28,6 @@ int main()
 }
 struct pessoa *criandoNovaPessoa(int idade, char *nome)
 {
-    printf("\n criando nova pessoa");
     struct pessoa *novaPessoa = NULL; // cria ponteiro para nova pessoa
     novaPessoa = malloc(sizeof(struct pessoa));
     novaPessoa->idade = idade;
@@ -37,7 +37,6 @@ struct pessoa *criandoNovaPessoa(int idade, char *nome)
 }
 void printarPessoas(struct pessoa *pessoa)
 {
-    printf("\n void printar pessoas");
     if (pessoa == NULL)
     {
         printf("Nulo \n");

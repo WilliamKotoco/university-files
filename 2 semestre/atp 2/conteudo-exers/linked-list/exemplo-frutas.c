@@ -46,6 +46,8 @@ int main()
         break;
     }
     salvarMudancas(cadastro);
+
+    return 0;
 }
 struct fruta *leArquivo(struct fruta *head) // head é o primeiro elemento da lista, que vc vai colocar no cadastro
 {
