@@ -1,6 +1,11 @@
 #include<stdio.h>
+#include<stdlib.h>
 #define N 50
 void printSortedArray(int *vet);
+void quicksort(int *vet, int low, int high);
+int mediana(int *vet, int low, int mid, int high);
+void troca(int *a, int *b);
+
 int main()
 {
     int vet[N];
@@ -43,29 +48,13 @@ void quicksort(int *vet, int low, int high)
 }
 int mediana(int *vet, int low, int mid, int high)
 {
-    // TODO: pensar maneira mais eficiente
-    int array[3];
-    int aux, j;
-    array[0] = vet[low];
-    array[1] = vet[mid];
-    array[2] = vet[high];
-     for ( int i = 1; i < 3; i++)
-    {
-        aux = array[i];
-        j = i;
-        while(j>0 && array[j-1] > aux)
-        {
-            array[j] = array[j-1];
-            j--;
-        }
-        array[j] = aux;
-    }
-    if (array[2] == vet[mid])
+    if ((vet[low] <= vet[mid] && vet[high] >= vet[mid]) || (vet[low] >= vet[mid] && vet[mid] >= vet[high]))
         return mid;
-    if (array[2] == vet[low])
+    if ((vet[mid] <= vet[low] && vet[high] >= vet[low]) || (vet[mid] >= vet[low] && vet[low] >= vet[high]))
         return low;
-    if (array[2] == vet[high])
+    if ((vet[mid] <= vet[high] && vet[low] >= vet[high]) || (vet[mid] >= vet[high] && vet[low] <= vet[high]))
         return high;
+return -1;
 
 }
 void troca(int *a, int *b)
