@@ -1,67 +1,87 @@
-#include<stdio.h>
-#include<stdlib.h>
-#define N 50
-void printSortedArray(int *vet);
-void quicksort(int *vet, int low, int high);
-int mediana(int *vet, int low, int mid, int high);
-void troca(int *a, int *b);
+#include <stdio.h>
+#include <stdlib.h>
+struct bigInt
+{
+    int high;
+    int low;
+};
+void quicksort(struct bigInt *number,int low, int high);
+int mediana(struct bigInt *number, int low, int mid, int high);
+void swap(struct bigInt *a, struct bigInt *b);
+
 
 int main()
 {
-    int vet[N];
-    for (int i = 0; i < N; i++)
-        vet[i] = 223*i + 234234 %100;
+    FILE *input, *output;
+    int i = 0;
+    struct bigInt number [200000];
+    input = fopen("bigint.dat", "r");
+    do
+    {
+        fscanf(input, "%d", &number[i].high);
+        fscanf(input, "%d", &number[i].low);
+        i++;
+    }while(!feof(input));
+
+    fclose (input);
+    fflush (input);
+
+    quicksort(number, 0,i - 2);
+
+    output = fopen ("quick.dat", "w");
     
-    printSortedArray(vet);
+    for (int j = 0; j < i-1; j++)
+        fprintf(output, "%d %d\n", number[j].high, number[j].low);
+        
+
+    fclose (output);
 
     return 0;
 }
-void printSortedArray(int *vet)
+void quicksort(struct bigInt *number, int low, int high)
 {
-    quicksort(vet,0, N-1);
-    for (int i = 0; i < N; i++)
-        printf("%d ", vet[i]);
-}
-void quicksort(int *vet, int low, int high)
-{
-    int i, pivo, bigger;
+    int i = 0, pivo, bigger;
     if (low < high)
     {
-        pivo = mediana(vet, low, (low+high)/2, high);
-        troca (&vet[pivo], &vet[high]);
+        pivo = mediana(number, low, (low+high)/2, high);
+        swap(&number[pivo], &number[high]);
         bigger = low;
         for (i = bigger; i < high; i++)
         {
-            if (vet[i] < vet[high])
+            if((number[i].high < number[high].high) ||
+            (number[i].high == number[high].high && number[i].low < number[high].low) ||
+            (number[i].high == number[high].high && number[i].high < 0 && number[i].low > number[high].low) )
             {
-                troca(&vet[i], &vet[bigger]);
+                swap(&number[i], &number[bigger]);
                 bigger++;
             }
+         
         }
-        // troca o pivo com o elemento maior que o pivo que esteja na posicao mais baixa do q o pivo
-        troca (&vet[bigger], &vet[i]);
-        quicksort(vet, low, bigger-1);
-        quicksort(vet, bigger+1, high);
+
+        swap (&number[high], &number[bigger]);
+        quicksort(number, low, bigger-1);
+        quicksort(number, bigger+1, high);
     }
-    else
-        return;
-}
-int mediana(int *vet, int low, int mid, int high)
-{
-    if ((vet[low] <= vet[mid] && vet[high] >= vet[mid]) || (vet[low] >= vet[mid] && vet[mid] >= vet[high]))
-        return mid;
-    if ((vet[mid] <= vet[low] && vet[high] >= vet[low]) || (vet[mid] >= vet[low] && vet[low] >= vet[high]))
-        return low;
-    if ((vet[mid] <= vet[high] && vet[low] >= vet[high]) || (vet[mid] >= vet[high] && vet[low] <= vet[high]))
-        return high;
-return -1;
 
 }
-void troca(int *a, int *b)
+
+void swap(struct bigInt *a, struct bigInt *b)
 {
-    int aux;
+    struct bigInt aux;
     aux = *a;
-    *b = aux;
     *a = *b;
+    *b = aux; 
+}
 
+int mediana(struct bigInt *number, int low, int mid, int high)
+{
+    if ((number[low].high <= number[mid].high && number[mid].high <= number[high].high) || 
+        (number[low].high >= number[mid].high && number[mid].high >= number[high].high))
+        return mid;
+
+    else if((number[mid].high >= number[low].high && number[low].high >= number[high].high) || 
+            (number[high].high >= number[low].high && number[low].high >= number[mid].high))
+        return low;
+    
+    return high;
 }
