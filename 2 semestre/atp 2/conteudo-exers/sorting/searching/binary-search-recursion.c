@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define N 50
-void sorting(int *array);
 int binarySearch(int *array, int elem, int left, int right);
 
 
@@ -17,22 +16,7 @@ sorting(array);
 
 
 }
-void sorting(int *array)
-{
-    int i, j, aux;
-    for (i = 1; i < N; i++)
-    {
-        aux = array[i];
-        j = i;
-        while(j>0 && array[j-1] > aux)
-        {
-            array[j] = array[j-1];
-            j--;
-        }
-        array[j] = aux;
-    }
 
-}
 int binarySearch(int *array, int elem, int left, int right)
 {
     int mid = left + (right - left)/2;
