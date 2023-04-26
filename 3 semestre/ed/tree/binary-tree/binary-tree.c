@@ -44,8 +44,3 @@ struct tree *insertInTree(struct tree *node, struct tree *root)
     return node;
  
 }
-
-struct tree *insertLeft(struct tree *node, struct tree *father)
-{
-    while()
-}
