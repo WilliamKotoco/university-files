@@ -83,6 +83,7 @@ struct tree *remove_all_even_nodes(struct tree *node)
 {
     while(node && node->value %2 == 0)
     {
+        // the reason for the while is in the case the child is also even
         node = remove_even_nodes(node);
     }
     if(node)
