@@ -1,4 +1,4 @@
-/*
+    /*
 Implementa as funções tanto da árvore dinâmica quanto da árvore estática.
 */
 #include "arvores.h"

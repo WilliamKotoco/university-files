@@ -33,7 +33,7 @@ desceu mais) incrementando 1 para contar.
     if (root == NULL)
         return 0;
     int n1 = height(root->right);
-    int n2 = height(root->left);
+    int n2 = height(root->left);    
 
     return n1 > n2 ? n1 +1 : n2 + 1;
 

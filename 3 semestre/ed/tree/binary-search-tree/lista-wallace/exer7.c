@@ -21,6 +21,8 @@ struct tree *create(struct tree *node, int value)
 
     return node;
 }
+
+
 int height(struct tree *node)
 {
     if (!node)
