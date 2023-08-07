@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.py": "python",
-        "type_traits": "c",
-        "stdlib.h": "c",
-        "stdio.h": "c",
-        "insertion-confuso,c": "c"
-    }
-}
