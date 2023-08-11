@@ -1,0 +1,30 @@
+João 1 2002 Engenharia joao@example.com
+Maria 2 2005 Direito maria@example.com
+Pedro 3 2000 Ciências da Computação pedro@example.com
+Ana 4 2003 Psicologia ana@example.com
+Lucas 5 2001 Administração lucas@example.com
+Sofia 6 2006 Medicina sofia@example.com
+Rafael 7 1999 Economia rafael@example.com
+Clara 8 2004 Arquitetura clara@example.com
+Gustavo 9 2002 Biologia gustavo@example.com
+Laura 10 2003 Jornalismo laura@example.com
+Mateus 11 2004 Medicina mateus@example.com
+Beatriz 12 2005 Engenharia Civil beatriz@example.com
+Bruno 13 2001 Design bruno@example.com
+Isabela 14 2000 Farmácia isabela@example.com
+Tiago 15 2006 Química tiago@example.com
+Carolina 16 1998 Letras carolina@example.com
+Felipe 17 2002 Matemática felipe@example.com
+Helena 18 2003 Pedagogia helena@example.com
+André 19 2004 Física andre@example.com
+Mariana 20 2005 Administração mariana@example.com
+Daniel 21 2002 Filosofia daniel@example.com
+Juliana 22 2001 História juliana@example.com
+Gabriel 23 2000 Engenharia Elétrica gabriel@example.com
+Sofia 24 2006 Psicologia sofia2@example.com
+Lucas 25 1999 Medicina lucas2@example.com
+Júlia 26 2004 Arquitetura julia@example.com
+Pedro 27 2003 Ciências Sociais pedro2@example.com
+Larissa 28 2005 Design de Interiores larissa@example.com
+Rafael 29 2002 Biomedicina rafael2@example.com
+Letícia 30 2001 Relações Internacionais leticia@example.com
