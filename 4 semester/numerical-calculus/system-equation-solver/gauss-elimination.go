@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
 This program solve system equations using gauss elimination with partial pivot process. The gauss elimination
@@ -26,9 +29,16 @@ func main() {
 	for step := 0; step < len(matrix)-1; step++ {
 		pivot := get_pivot(step, matrix)
 
-		multipliers := create_multipliers(step, matrix, pivot)
+		for i := step + 1; i < len(matrix); i++ {
+			multiplier := matrix[i][step] / pivot
 
-		update_matrix(matrix, multipliers, step)
+			for j := step; j < len(matrix[0]); j++ {
+				matrix[i][j] -= multiplier * matrix[step][j]
+			}
+
+		}
+
+		//update_matrix(matrix, multipliers, step)
 
 		//fmt.Println(matrix)
 	}
@@ -87,49 +97,18 @@ func read_matrix() [][]float64 {
 
 // / Returns the partial pivot, which is the biggest element of the kth colunm, k being the current step.
 func get_pivot(step int, matrix [][]float64) float64 {
-	var biggest float64 = 0
 
-	/// the number of lines are the number of columns  - 1
-	size := len(matrix[0]) - 1
-	var biggest_line int
-	for i := step; i < size; i++ {
-		if matrix[i][step] > biggest {
-			biggest = matrix[i][step]
-			biggest_line = i
+	maxVal := math.Abs(matrix[step][step])
+	maxRow := step
+
+	for i := step + 1; i < len(matrix); i++ {
+		if val := math.Abs(matrix[i][step]); val > maxVal {
+			maxVal = val
+			maxRow = i
 		}
 	}
-
 	/// permutate the lines
-	matrix[biggest_line], matrix[step] = matrix[step], matrix[biggest_line]
-	return biggest
+	matrix[maxRow], matrix[step] = matrix[step], matrix[maxRow]
+	return matrix[step][step]
 
-}
-
-/*
-Create the multipliers according to the step and pivot. Returns a slice of them
-*/
-func create_multipliers(step int, matrix [][]float64, pivot float64) []float64 {
-
-	multipliers := make([]float64, len(matrix))
-
-	/// multipliers always made for the lines below the step
-	for i := step + 1; i < len(matrix); i++ {
-		multipliers[i] = matrix[i][step] / pivot
-	}
-
-	return multipliers
-
-}
-
-// / do the updates based on the multipliers, adding and permutating lines
-func update_matrix(matrix [][]float64, multipliers []float64, step int) {
-
-	for i := step + 1; i < len(matrix); i++ {
-
-		/// multiplies each element of the line.
-		for j := 0; j < len(matrix[i]); j++ {
-			matrix[i][j] -= multipliers[i] * matrix[step][j]
-		}
-
-	}
 }
