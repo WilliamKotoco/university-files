@@ -6,7 +6,7 @@
 #include<stdlib.h>
 struct register_file
 {
-    char name[400];
+    char name[50];
     unsigned int age;
     double money;
 };

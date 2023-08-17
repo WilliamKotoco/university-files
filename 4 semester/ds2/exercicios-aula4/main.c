@@ -5,8 +5,15 @@
 #include "include/add_elements.h"
 
 int main() {
-    struct register_file element;
-    uint op;
+
+    int number_elements = 0;
+    FILE *read = fopen("qtd.txt", "r");
+    if(read != NULL)
+    {
+        fscanf(read, "%d", &number_elements);
+        fclose(read);
+    }
+    int op;
     printf("[1] for inserting a new register \n"
            "[2] for searching by index"
            "\n [3] for searching by name");
@@ -14,10 +21,12 @@ int main() {
     switch (op)
     {
         case 1:
-            add_element();
+            add_element(number_elements);
+            FILE *write = fopen("qtd.txt", "w");
+            fprintf(write, "%d", number_elements + 1);
             break;
         case 2:
-            search_by_id();
+            search_by_id(number_elements);
             break;
 
     }

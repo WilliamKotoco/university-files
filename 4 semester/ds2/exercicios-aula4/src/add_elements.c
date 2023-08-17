@@ -2,19 +2,18 @@
 
 #include "../include/add_elements.h"
 #include "../include/register.h"
+
 /// reads the file and add a new element
-void add_element()
-{
-    FILE *fp = fopen("../register.bin", "a");
-    if (fp == NULL)
-    {
+void add_element(int number_elements) {
+    FILE *fp = fopen("register.bin", "ab");
+    if (fp == NULL) {
         printf("File does not exist");
         exit(0);
     }
 
     struct register_file element;
     printf("Name: ");
-    scanf("%s", element.name);
+    scanf("%49s", element.name);
     printf("\n Money: ");
     scanf("%lf", &element.money);
     printf("Age: ");
@@ -26,31 +25,30 @@ void add_element()
     fwrite(&element, sizeof(struct register_file), 1, fp);
     ///  goes to the end of the file to get the location.
 
-    fseek(fp, SEEK_END, 0);
+    fseek(fp, 0, SEEK_END);
     long byte_offset = ftell(fp);
     fclose(fp);
 
-    add_index_files(byte_offset);
+    add_index_files(byte_offset, number_elements, element.name);
 
 }
 
-void add_index_files(long int byte_offset)
-{
-FILE *fp = fopen("index_file.bin", "a+");
-int highest_id;
-fscanf(fp, "%d", &highest_id);
-rewind(fp);
-fprintf(fp, "%d", highest_id + 1);
-struct index_register_file element;
-element.index = highest_id + 1;
-element.byte_offset = byte_offset;
+void add_index_files(long int byte_offset, int number_elements, char *name) {
+    FILE *fp = fopen("index_file.bin", "ab");
 
-fwrite(&element, sizeof(struct index_register_file),1, fp);
-fclose(fp);
+    struct index_register_file index_file_element;
+    index_file_element.index = number_elements ;
+    index_file_element.byte_offset = byte_offset;
+    fwrite(&index_file_element, sizeof(struct index_register_file), 1, fp);
+    fclose(fp);
 
-FILE *fp fopen("index_name.bin", "a");
+    FILE *fp2 = fopen("index_name.bin", "ab");
 
+    struct index_name_file name_file_element;
+    strcpy(name_file_element.name, name);
+    name_file_element.index = number_elements;
 
+    fwrite(&name_file_element, sizeof(struct index_name_file), 1, fp2);
 
 
 }
