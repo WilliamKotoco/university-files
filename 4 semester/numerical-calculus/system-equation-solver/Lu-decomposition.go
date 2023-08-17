@@ -4,7 +4,7 @@ package main
 This program aims to solve a system equation using the Lu factoring.
 
 The main difference is that we store the multipliers on the zeros and get
-Ax = B as (LU)x = b, where L is a lower triangular matrix and U is an upper one triangular
+Ax = B as (LU)x = b, where L is a lower triangular matrix and U is an upper  triangular
 matrix
 
 After that decomposition, we make y = Ux and obtain the resolution through the following system:
@@ -14,6 +14,7 @@ ii) Ux = y
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -61,7 +62,14 @@ func main() {
 
 	/// now we need to solve those systems
 	/// a) Ly = b, L * variable = results
-	
+	Y := solution_first_system(L, results)
+	fmt.Println("Solution of Y equation: ")
+	fmt.Println(Y)
+
+	/// finally, solve the system b) Ux =y where the solution is the solution for the entire system
+	final_solution := solve_final_system(U, Y)
+	fmt.Println("Final solution of the system: ")
+	fmt.Println(final_solution)
 }
 
 func read_matrix2() [][]float64 {
@@ -132,4 +140,39 @@ func build_U_matrix(matrix [][]float64) [][]float64 {
 		}
 	}
 	return U
+}
+
+// / The first system consists in a lower triangular matrix.
+func solution_first_system(L [][]float64, results []float64) []float64 {
+	size := len(L)
+	solution := make([]float64, size)
+
+	solution[0] = results[0] / L[0][0]
+
+	for step := 1; step < size; step++ {
+		var sum float64 = 0
+		for i := 0; i < step; i++ {
+			sum += L[step][i] * solution[i]
+		}
+		solution[step] = (results[step] - sum) / L[step][step]
+	}
+	return solution
+}
+
+// / Solve an upper triangular system equation
+func solve_final_system(U [][]float64, Y []float64) []float64 {
+	last_index := len(U) - 1
+	solution := make([]float64, len(Y))
+
+	solution[last_index] = math.Round(Y[last_index] / U[last_index][last_index])
+
+	for step := last_index - 1; step >= 0; step-- {
+		var sum float64 = 0
+		for i := step + 1; i < last_index+1; i++ {
+			sum += U[step][i] * solution[i]
+		}
+
+		solution[step] = math.Round((Y[step] - sum) / U[step][step])
+	}
+	return solution
 }
