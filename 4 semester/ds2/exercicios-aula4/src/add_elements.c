@@ -50,5 +50,33 @@ void add_index_files(long int byte_offset, int number_elements, char *name) {
 
     fwrite(&name_file_element, sizeof(struct index_name_file), 1, fp2);
 
+    fclose(fp2);
 
+    update_name_file(number_elements);
+
+
+}
+void update_name_file(int n)
+{
+    FILE *fp = fopen("index_name.bin", "rb");
+    fflush(stdin);
+    fflush(fp);
+    struct index_name_file elements[n];
+    fread(elements, sizeof(struct index_name_file), n, fp);
+    fclose(fp);
+
+    /// insertion sort
+     for (int i = 1; i < n; ++i) {
+        struct index_name_file key = elements[i];
+        int j = i - 1;
+        while (j >= 0 && strcmp(elements[j].name, key.name) > 0) {
+            elements[j + 1] = elements[j];
+            j = j - 1;
+        }
+        elements[j + 1] = key;
+    }
+    
+     FILE *write = fopen("index_name.bin", "wb");
+     fwrite(elements, sizeof(struct index_name_file), n, write);
+     fclose(write);
 }

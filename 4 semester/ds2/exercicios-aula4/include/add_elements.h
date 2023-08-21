@@ -13,4 +13,8 @@ void add_element(int number_elements);
 
 /// updates the index id file and the index name file
 void add_index_files(long int byte_offset, int number_elements, char *name);
+
+/// sorts the name files
+void update_name_file(int n);
+
 #endif //EXERCICIOS_AULA4_ADD_ELEMENTS_H

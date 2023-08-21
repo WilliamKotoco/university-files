@@ -3,6 +3,7 @@
 #include "include/register.h"
 #include "include/search_id.h"
 #include "include/add_elements.h"
+#include "include/search_name.h"
 
 int main() {
 
@@ -28,6 +29,8 @@ int main() {
         case 2:
             search_by_id(number_elements);
             break;
-
+        case 3:
+            search_name(number_elements);
+            break;
     }
 }
