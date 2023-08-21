@@ -32,6 +32,7 @@ func main() {
 		for i := step + 1; i < len(matrix); i++ {
 			multiplier := matrix[i][step] / pivot
 
+			/// go through the columns as well.
 			for j := step; j < len(matrix[0]); j++ {
 				matrix[i][j] -= multiplier * matrix[step][j]
 			}

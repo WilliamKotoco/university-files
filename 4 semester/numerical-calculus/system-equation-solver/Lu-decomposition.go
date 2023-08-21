@@ -7,7 +7,7 @@ The main difference is that we store the multipliers on the zeros and get
 Ax = B as (LU)x = b, where L is a lower triangular matrix and U is an upper  triangular
 matrix
 
-After that decomposition, we make y = Ux and obtain the resolution through the following system:
+After that decomposition, we make Ux = y and obtain the resolution through the following system:
 i) Ly = b
 ii) Ux = y
 */
@@ -25,10 +25,13 @@ func main() {
 	fmt.Println("Initial matrix:")
 	fmt.Println(matrix)
 
+	/// does not escalate the answers, which are stored in the last index of the column
+
+	/// the last line does not escalate
 	for step := 0; step < len(matrix)-1; step++ {
 		pivot := matrix[step][step]
 
-		/// now it goes until the last colunm
+		/// now it goes until the last column but not get the answers
 		for i := step + 1; i < len(matrix); i++ {
 			multiplier := matrix[i][step] / pivot
 
@@ -43,7 +46,7 @@ func main() {
 
 	}
 
-	/// getting the vector of results
+	/// getting the vector of results, A[line][last_column]
 	results := make([]float64, len(matrix))
 	for i := 0; i < len(matrix); i++ {
 		results[i] = matrix[i][len(matrix)]
