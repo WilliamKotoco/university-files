@@ -7,7 +7,7 @@ void search_by_id(int total_elements)
     printf("Digit the id for searching");
     scanf("%d", &id);
 
-   long int byte_offset = prepare_binary_search(id, total_elements);
+   long int byte_offset = prepare_binary_search_id(id, total_elements);
 
     if(byte_offset == -1 )
     {
@@ -26,7 +26,7 @@ void search_by_id(int total_elements)
     printf("\n Money: %lf", element.money);
  }
 
-long int prepare_binary_search(int id, int total_elements)
+long int prepare_binary_search_id(int id, int total_elements)
 {
     FILE *fp = fopen("index_file.bin", "rb");
 
@@ -35,10 +35,10 @@ long int prepare_binary_search(int id, int total_elements)
     fread(elements, sizeof(struct index_register_file), total_elements, fp);
 
    
-    return binary_search(elements, id, 0, total_elements);
+    return binary_search_id(elements, id, 0, total_elements);
 }
 
-long int binary_search(struct index_register_file *elements, int id, int left, int right)
+long int binary_search_id(struct index_register_file *elements, int id, int left, int right)
 {
 
     int mid = (right + left) / 2;
@@ -48,7 +48,7 @@ long int binary_search(struct index_register_file *elements, int id, int left, i
     if (elements[mid].index == id)
         return elements[mid].byte_offset;
     else if (elements[mid].index > id)
-        return binary_search(elements, id, left, mid - 1);
+        return binary_search_id(elements, id, left, mid - 1);
     else
-        return binary_search(elements, id, mid + 1, right);
+        return binary_search_id(elements, id, mid + 1, right);
 }

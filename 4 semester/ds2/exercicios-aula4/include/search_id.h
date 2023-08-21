@@ -12,8 +12,8 @@ void search_by_id(int total_elements);
 
 /// receives the id and prepares for doing the binary search
 /// by reading the file. Returns the binary_search result
-long int prepare_binary_search(int id, int total_elements);
+long int prepare_binary_search_id(int id, int total_elements);
 
-long int binary_search(struct index_register_file *elements, int id, int left, int right);
+long int binary_search_id(struct index_register_file *elements, int id, int left, int right);
 
 #endif //EXERCICIOS_AULA4_SEARCH_ID_H
