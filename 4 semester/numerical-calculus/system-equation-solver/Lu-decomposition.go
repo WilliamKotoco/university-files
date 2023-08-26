@@ -38,9 +38,9 @@ func main() {
 			for j := step; j < len(matrix); j++ {
 				matrix[i][j] -= multiplier * matrix[step][j]
 
-				/// here the indices currently being zero will be replaced by the multiplier
-				matrix[i][step] = multiplier
 			}
+			/// here the indices currently being zero will be replaced by the multiplier
+			matrix[i][step] = multiplier
 
 		}
 
@@ -106,6 +106,7 @@ func read_matrix2() [][]float64 {
 	}
 
 	return matrix
+
 }
 
 func build_L_matrix(matrix [][]float64) [][]float64 {

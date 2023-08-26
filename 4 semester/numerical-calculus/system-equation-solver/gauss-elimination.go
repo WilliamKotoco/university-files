@@ -1,8 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math"
+	"os"
+	"strconv"
+	"strings"
 )
 
 /*
@@ -11,12 +15,6 @@ consists in transform the original system in an upper triangular matrix.
 
 The program gets the system from a file.
 */
-import (
-	"bufio"
-	"os"
-	"strconv"
-	"strings"
-)
 
 func main() {
 	matrix := read_matrix()
@@ -104,8 +102,7 @@ func get_pivot(step int, matrix [][]float64) float64 {
 
 	for i := step + 1; i < len(matrix); i++ {
 		if val := math.Abs(matrix[i][step]); val > maxVal {
-			maxVal = val
-			maxRow = i
+			maxVal, maxRow = val, i
 		}
 	}
 	/// permutate the lines
