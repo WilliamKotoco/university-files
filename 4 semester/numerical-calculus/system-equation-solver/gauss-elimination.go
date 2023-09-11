@@ -36,10 +36,6 @@ func main() {
 			}
 
 		}
-
-		//update_matrix(matrix, multipliers, step)
-
-		//fmt.Println(matrix)
 	}
 	fmt.Println("Final matrix:")
 	fmt.Println(matrix)
@@ -101,8 +97,8 @@ func get_pivot(step int, matrix [][]float64) float64 {
 	maxRow := step
 
 	for i := step + 1; i < len(matrix); i++ {
-		if val := math.Abs(matrix[i][step]); val > maxVal {
-			maxVal, maxRow = val, i
+		if math.Abs(matrix[i][step]) > maxVal {
+			maxVal, maxRow = matrix[i][step], i
 		}
 	}
 	/// permutate the lines
