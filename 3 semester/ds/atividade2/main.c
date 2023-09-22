@@ -29,7 +29,8 @@ void teste1()
     raiz = inserir(raiz, 7);
     raiz = inserir(raiz, 10);
     printf("Imprimindo teste 1: \n");
-    imprimir(raiz, 1);
+    remover(raiz, 3);
+    imprimir(raiz,1);
     printf("\n");
 
 }
@@ -76,6 +77,7 @@ void teste4()
     raiz = inserir(raiz, 3);
     raiz = inserir(raiz, 2);
     raiz = inserir(raiz, 1);
+   //remover(raiz, 5); 
     printf("Imprimindo teste 4: \n");
     imprimir(raiz, 1);
     printf("\n");
