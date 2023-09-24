@@ -24,7 +24,7 @@ func main() {
 	matrix := read_matrix2()
 	fmt.Println("Initial matrix:")
 	fmt.Println(matrix)
-
+	matrix[0][0] = 0.000003
 	/// does not escalate the answers, which are stored in the last index of the column
 
 	/// the last line does not escalate
