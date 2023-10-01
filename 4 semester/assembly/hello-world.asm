@@ -11,7 +11,7 @@ start:
 
 	mov ecx, hello		; string's address 
 	mov edx, hello_len ; register edx receives the string length
-	
+
 	int 0x80			; call syscal 4 (responsible for writting)
 	
 	mov eax, 1			; eax register receives 1, syscall code responsible for finishing the program

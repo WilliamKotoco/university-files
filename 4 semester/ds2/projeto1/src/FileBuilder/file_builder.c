@@ -25,7 +25,7 @@ void write_index_name_file() {
     FILE *fp = fopen(SECONDARY_KEY_FILE, "w");
     for (int i = 0; i < g_total_elements; i++) {
         fputs(index_name[i].name, fp);
-        fputc('@', fp);
+         fputc('@', fp);
         fputs(index_name[i].id, fp);
         fputc('@', fp);
     }
