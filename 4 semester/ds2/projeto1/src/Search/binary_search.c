@@ -48,7 +48,7 @@ int binary_search_id(struct movie_index_id *array, char *id, int low, int high)
         return -1;
     int mid = low + ((high - low) >> 1);
     int comp = strcasecmp(id, array[mid].id);
-    if (comp== 0)
+    if (comp == 0)
         return mid;
     else if (comp > 0)
         return binary_search_id(array, id, mid+1, high);

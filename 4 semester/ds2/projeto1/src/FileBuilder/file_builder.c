@@ -72,6 +72,7 @@ void update_mark_movie_file(long byte_offset, char new_mark) {
     while((c = fgetc(fp)) != EOF && c != '#');
     fseek(fp, -2, SEEK_CUR);
      fputc(new_mark, fp);
+     fclose(fp);
 
 
 }
