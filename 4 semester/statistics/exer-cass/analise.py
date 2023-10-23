@@ -91,7 +91,6 @@ west_filtered_data, west_preferable_data = filtrate_data(west_data)
 south_filtered_data, south_preferable_data = filtrate_data(south_data)
 east_filtered_data, east_preferable_data = filtrate_data(east_data)
 
-
 # Limites personalizados para cada região
 # Seu código existente
 central_filtered_data = central_filtered_data['VALOR DA CASA']
@@ -99,8 +98,6 @@ north_filtered_data = north_filtered_data['VALOR DA CASA']
 south_filtered_data = south_filtered_data['VALOR DA CASA']
 west_filtered_data = west_filtered_data['VALOR DA CASA']
 east_filtered_data = east_filtered_data['VALOR DA CASA']
-
-
 
 colors = ['blue', 'orange', 'green', 'red', 'black']
 data_length = [
@@ -117,8 +114,32 @@ for i, bplot in enumerate(bplots['boxes']):
 regions = ['Central', 'West', 'South', 'East', 'North']
 plt.xticks([1, 2, 3, 4, 5], regions)
 
-plt.title("Boxplot dos dados com os requisitos mínimos para cada região", loc='center')
+plt.title("Boxplot dos dados com os requisitos mínimos para cada região",
+          loc='center')
 plt.xlabel("Regiões")
 plt.ylabel("Preço")
 
+plt.show()
+
+#histograma agora
+north_preferable_data = north_preferable_data['VALOR DA CASA']
+plt.hist(base_data['VALOR DA CASA'])
+plt.show()
+
+sizes = [
+    len(central_filtered_data),
+    len(west_filtered_data),
+    len(south_filtered_data),
+    len(east_filtered_data),
+    len(north_filtered_data)
+]
+
+fig, ax = plt.subplots()
+
+bar_labels = ['red', 'blue', 'green', 'orange', 'grey ']
+bar_colors = ['tab:red', 'tab:blue', 'tab:orange', 'tab:grey']
+
+ax.bar(regions, sizes, label=bar_labels, color=bar_colors)
+ax.set_ylabel('num casas')
+ax.set_title('numero de casas por regiao')
 plt.show()
