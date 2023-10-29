@@ -2,7 +2,7 @@ from os import read
 import statistics
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import tabulate as tblt
 
 def read_tsv(file_path):
     data = pd.read_csv(file_path, delimiter='\t')
@@ -22,14 +22,15 @@ def filtrate_data(data):
 
 def calculate_info(data, lugar):
     filtered_data, preferable_data = filtrate_data(data)
-    print(
-        "Resumo dos dados das casas na região {} que satisfazem os requisitos mínimos:"
-        .format(lugar))
-    print_data(filtered_data)
-    print(
-        "Resumo dos dados das casas na região {} que satisfazem todos os requisitos:"
-        .format(lugar))
-    print_data(preferable_data)
+    #print(
+    #       "Resumo dos dados das casas na região {} que satisfazem os requisitos mínimos:"
+    #    .format(lugar))
+    
+    #print_data(filtered_data)
+    #print(
+    #   "Resumo dos dados das casas na região {} que satisfazem todos os requisitos:"
+    #   .format(lugar))
+#    print_data(preferable_data)
 
 
 def print_data(data):
@@ -99,6 +100,9 @@ south_filtered_data = south_filtered_data['VALOR DA CASA']
 west_filtered_data = west_filtered_data['VALOR DA CASA']
 east_filtered_data = east_filtered_data['VALOR DA CASA']
 
+print(tblt.tabulate(north_filtered_data))
+
+
 colors = ['blue', 'orange', 'green', 'red', 'black']
 data_length = [
     central_filtered_data, west_filtered_data, south_filtered_data,
@@ -142,4 +146,3 @@ bar_colors = ['tab:red', 'tab:blue', 'tab:orange', 'tab:grey']
 ax.bar(regions, sizes, label=bar_labels, color=bar_colors)
 ax.set_ylabel('num casas')
 ax.set_title('numero de casas por regiao')
-plt.show()
