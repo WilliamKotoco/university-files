@@ -1,0 +1,27 @@
+# ninja log v5
+1	62	1701109639024138411	CMakeFiles/projeto1.dir/src/DataProcessing/data_processor.c.o	cbf685cfbf87e252
+1	55	1701109639016138401	CMakeFiles/projeto1.dir/src/SplitManager/split_manager.c.o	a8e386eca6bcacc4
+48	81	1701109639042138435	CMakeFiles/projeto1.dir/src/Remove/remove_manager.c.o	f9adc9a9b406c824
+92	117	1701109639078138483	projeto1	a330c082a40c17e8
+1	48	1701109639009138391	CMakeFiles/projeto1.dir/src/FileReader/file_reader.c.o	28e6c816f28dac50
+46	78	1701109639039138431	CMakeFiles/projeto1.dir/src/Search/binary_search.c.o	1fd8e9bd53222cbf
+55	90	1701109639052138448	CMakeFiles/projeto1.dir/src/Update/update_manager.c.o	eb7b5e7fe17dc323
+43	92	1701109639053138450	CMakeFiles/projeto1.dir/src/Search/search_manager.c.o	5529bc4ecdd1bf7c
+1	63	1701109639025138413	CMakeFiles/projeto1.dir/src/FileBuilder/file_builder.c.o	d001a22bf9cbe70d
+0	43	1701109639004138385	CMakeFiles/projeto1.dir/src/ui.c.o	76927400935f9d59
+0	46	1701109639006138387	CMakeFiles/projeto1.dir/src/main.c.o	488a5b4f9d3d3957
+0	98	1701120367654265526	CMakeFiles/projeto1.dir/src/main.c.o	488a5b4f9d3d3957
+3	107	1701120367661265549	CMakeFiles/projeto1.dir/src/DataProcessing/data_processor.c.o	cbf685cfbf87e252
+1	114	1701120367670265578	CMakeFiles/projeto1.dir/src/ui.c.o	76927400935f9d59
+1	120	1701120367676265598	CMakeFiles/projeto1.dir/src/FileBuilder/file_builder.c.o	d001a22bf9cbe70d
+4	127	1701120367683265620	CMakeFiles/projeto1.dir/src/SplitManager/split_manager.c.o	a8e386eca6bcacc4
+3	131	1701120367687265633	CMakeFiles/projeto1.dir/src/FileReader/file_reader.c.o	28e6c816f28dac50
+114	171	1701120367727265763	CMakeFiles/projeto1.dir/src/Remove/remove_manager.c.o	f9adc9a9b406c824
+120	175	1701120367731265776	CMakeFiles/projeto1.dir/src/Update/update_manager.c.o	eb7b5e7fe17dc323
+98	177	1701120367732265779	CMakeFiles/projeto1.dir/src/Search/search_manager.c.o	5529bc4ecdd1bf7c
+108	182	1701120367738265798	CMakeFiles/projeto1.dir/src/Search/binary_search.c.o	1fd8e9bd53222cbf
+182	218	1701120367773265911	projeto1	a330c082a40c17e8
+0	34	1701120774961141672	CMakeFiles/projeto1.dir/src/SplitManager/split_manager.c.o	a8e386eca6bcacc4
+34	53	1701120774979141703	projeto1	a330c082a40c17e8
+1	39	1701265146863463699	CMakeFiles/projeto1.dir/src/SplitManager/split_manager.c.o	a8e386eca6bcacc4
+39	72	1701265146895463736	projeto1	a330c082a40c17e8
