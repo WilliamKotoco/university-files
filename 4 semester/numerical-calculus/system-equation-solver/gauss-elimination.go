@@ -35,14 +35,14 @@ func main() {
 				matrix[i][j] -= multiplier * matrix[step][j]
 			}
 
-  		}
+		}
 	}
 	fmt.Println("Final matrix:")
 	fmt.Println(matrix)
 	/// now use the algorithm to solve the system of a triangular matrix
 	matrix_last_index := len(matrix) - 1
 	solutions := make([]float64, len(matrix))
-    
+
 	/// the answers are in the last_index + 1.
 	solutions[matrix_last_index] = matrix[matrix_last_index][matrix_last_index+1] / matrix[matrix_last_index][matrix_last_index]
 	for i := matrix_last_index - 1; i >= 0; i-- {
