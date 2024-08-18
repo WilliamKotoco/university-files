@@ -31,7 +31,6 @@ void produce() {
     sem_wait(&empty); // wait for an empty slot
     sem_wait(&producer_mutex);
 
-
     total_produced++;
     buffer[next_slot_production] = 1;
     next_slot_production = (next_slot_production + 1) % (N - 1);
@@ -101,4 +100,3 @@ int main(int argc, char *argv[]) {
   sem_destroy(&consumer_mutex);
   return 0;
 }
-
