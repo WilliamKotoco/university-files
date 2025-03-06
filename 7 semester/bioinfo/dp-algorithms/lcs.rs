@@ -19,23 +19,21 @@ fn lcs(s1: Vec<char>, s2: Vec<char>) -> (i32, String) {
             }
         }
     }
-    
+
     let mut lcs_string = String::new();
-    let mut i = n; 
+    let mut i = n;
     let mut j = m;
 
-    // backtrac to rebuild the string 
+    // backtrac to rebuild the string
     while i > 0 && j > 0 {
-        if s1[i-1] == s2[j-1]{
-            lcs_string.push(s1[i-1]);
+        if s1[i - 1] == s2[j - 1] {
+            lcs_string.push(s1[i - 1]);
             i -= 1;
             j -= 1;
-        }
-        else if matrix[i-1][j] > matrix[i][j-1] {
-            i -=1;
-        }
-        else{
-            j -=1;
+        } else if matrix[i - 1][j] > matrix[i][j - 1] {
+            i -= 1;
+        } else {
+            j -= 1;
         }
     }
 
