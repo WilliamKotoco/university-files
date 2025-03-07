@@ -24,7 +24,7 @@ pub fn lcs(s1: Vec<char>, s2: Vec<char>) -> (i32, String) {
 
     for i in 1..=n {
         for j in 1..=m {
-            matrix[i][j] = if (s1[i - 1] == s2[j - 1]) {
+            matrix[i][j] = if s1[i - 1] == s2[j - 1] {
                 matrix[i - 1][j - 1] + 1
             } else {
                 cmp::max(matrix[i][j - 1], matrix[i - 1][j])
