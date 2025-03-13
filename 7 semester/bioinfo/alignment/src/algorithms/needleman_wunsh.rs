@@ -26,7 +26,7 @@ fn create_dp_matrix(n: usize, m: usize) -> Vec<Vec<i32>> {
     matrix
 }
 
-/// Creates a score matrix that assigns a score for alignment or disaligment
+/// Creates a score matrix that assigns a score for alignment or or not misalignment
 ///
 /// The score matrix has the format
 /// A C G T
@@ -35,17 +35,17 @@ fn create_dp_matrix(n: usize, m: usize) -> Vec<Vec<i32>> {
 /// G
 /// T
 ///
-/// Where (A,C) is the penalty for the desaligment of A and C
+/// Where (A,C) is the penalty for the misalignment of A and C
 ///  
 /// TODO: For a while it is hard-coded, but it should be able to be read
 /// from a file or from user
 fn create_score_matrix() -> Vec<Vec<i32>> {
-    // simple matrix that assigns 1 for matching and -1 for mismatching
-    
-   let matrix = (0..4).map(|i| (0..4).map(|j| if i == j {1} else {-1}).collect()).collect(); 
-
-    
-    matrix
+    vec![
+        vec![1, -1, -1, -1],
+        vec![-1, 1, -1, -1],
+        vec![-1, -1, 1, -1],
+        vec![-1, -1, -1, 1],
+    ]
 }
 
 /// Return the score of s1 and s2
@@ -60,7 +60,7 @@ fn score(s1: char, s2: char, score: &Vec<Vec<i32>>) -> i32 {
 
 ///  Returns the length of the best found global alignment and the string.
 ///
-/// The recursion that builts the global alignemnt matrix is given :
+/// The recursion that built the global alignment matrix is given :
 ///
 /// D(i,j) = max { D(i-1, j-1) + score(xi,yj)
 ///                D(i-1, j) + gap
@@ -75,9 +75,8 @@ pub fn global_alignment(s1: Vec<char>, s2: Vec<char>) -> (i32, String, String) {
 
     let score_matrix = create_score_matrix();
 
-
-    for i in 1..n {
-        for j in 1..m {
+    for i in 1..=n {
+        for j in 1..=m {
             matrix[i][j] = max(
                 max(
                     matrix[i - 1][j - 1] + score(s1[i - 1], s2[j - 1], &score_matrix),
@@ -121,9 +120,9 @@ pub fn global_alignment(s1: Vec<char>, s2: Vec<char>) -> (i32, String, String) {
         }
     }
 
-    for row in &matrix {
-        println!("Linha1: {:?}", row);
-    }
+    // for row in &matrix {
+    //     println!("Linha1: {:?}", row);
+    // }
 
-    (matrix[n][m], alignment_s1, alignment_s2)
+    (matrix[n][m], alignment_s1.chars().rev().collect(), alignment_s2.chars().rev().collect())
 }
