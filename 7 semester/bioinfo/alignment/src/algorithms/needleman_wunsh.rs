@@ -1,6 +1,6 @@
 use core::panic;
 // https://www.cs.sjsu.edu/~aid/cs152/NeedlemanWunsch.pdf
-use std::cmp::{self, max};
+use std::{cmp::{self, max}, process::exit};
 
 const GAP: i32 = -1;
 // Creates the dynamic program matrix for the Needleman Wunsh algorithm
@@ -74,6 +74,7 @@ pub fn global_alignment(s1: Vec<char>, s2: Vec<char>) -> (i32, String, String) {
     let mut matrix = create_dp_matrix(n, m);
 
     let score_matrix = create_score_matrix();
+
 
     for i in 1..=n {
         for j in 1..=m {

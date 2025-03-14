@@ -10,6 +10,7 @@ def process_genetic_file(input_file, output_file):
             if len(parts) < 2:
                 continue  # Ignorar linhas mal formatadas
             sequence = parts[0]  # A sequência genética está antes do número
+            # Remover espaços e manter apenas os caracteres válidos
             filtered_sequence = ''.join(c for c in sequence if c in valid_chars)
             concatenated_sequence += filtered_sequence
 

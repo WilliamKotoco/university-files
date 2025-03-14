@@ -1,4 +1,5 @@
 use std::fs;
+use std::fs::File;
 use std::io;
 use std::path;
 /// Read alignment from file and return it as a char vector
@@ -30,4 +31,12 @@ pub fn read_alignment_from_user() -> (Vec<char>, Vec<char>) {
     io::stdin().read_line(&mut s2).expect("Failure reading string");
 
     (s1.to_ascii_uppercase().chars().collect(), s2.to_ascii_uppercase().chars().collect())
+}
+
+
+pub fn write_to_file(s1: String, s2: String) -> io::Result<()>{
+    let mut file  = File::create("output.txt");
+    writeln!(file, "Sequence 1: {}", s1)?;
+    writeln!(file, "Sequence 2: {}", s2)?;
+    Ok(())
 }
