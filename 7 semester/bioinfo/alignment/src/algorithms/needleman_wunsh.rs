@@ -39,7 +39,7 @@ fn create_dp_matrix(n: usize, m: usize) -> Vec<Vec<i32>> {
 ///  
 /// TODO: For a while it is hard-coded, but it should be able to be read
 /// from a file or from user
-fn create_score_matrix() -> Vec<Vec<i32>> {
+pub fn create_score_matrix() -> Vec<Vec<i32>> {
     vec![
         vec![1, -1, -1, -1],
         vec![-1, 1, -1, -1],
