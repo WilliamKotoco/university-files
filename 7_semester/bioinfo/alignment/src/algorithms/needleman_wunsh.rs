@@ -63,7 +63,7 @@ fn score(s1: char, s2: char, score: &Vec<Vec<i32>>) -> i32 {
 ///
 /// D(i,j) = max { D(i-1, j-1) + score(xi,yj)
 ///                D(i-1, j) + gap
-///                 D(i, j-1) + g
+///                 D(i, j-1) + gap
 ///                 }  
 pub fn global_alignment(s1: Vec<char>, s2: Vec<char>) -> (i32, String, String) {
     let n = s1.len();

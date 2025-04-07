@@ -3,7 +3,10 @@ use alignment::algorithms::needleman_wunsh;
 use alignment::algorithms::smith_homemagua;
 use alignment::dataloader::dataloader;
 use core::panic;
+use std::fs::File;
 use std::io::{self};
+use std::io::Write;
+
 
 /// TODO: this is shitty code, modularize later
 fn main() {
@@ -46,8 +49,7 @@ fn main() {
         2 => {
             (vec_s1, vec_s2) = dataloader::read_alignment_from_user();
 
-                println!("{:?}", vec_s1);
-
+            println!("{:?}", vec_s1);
         }
 
         _ => panic!("Invalid option"),
@@ -62,7 +64,6 @@ fn main() {
     let mut s2 = String::new();
 
     input.clear();
-
 
     io::stdin().read_line(&mut input).expect("Failed to read");
 
@@ -94,8 +95,23 @@ fn main() {
         _ => panic!("Enter a valid option"),
     }
 
-    println!("{s1}");
-    println!("{s2}");
+    if s1.len() > 500 || s2.len() > 500 {
+        
 
-    println!("Score is {score}");
+        println!("Score: {score}");
+        let mut file_s1 =
+            File::create("alignment_s1.txt").expect("Erro ao criar o arquivo alignment_s1.txt");
+
+        writeln!(file_s1, "s1:\n{s1}").unwrap();
+
+        let mut file_s2 =
+            File::create("alignment_s2.txt").expect("Erro ao criar o arquivo alignment_s2.txt");
+        writeln!(file_s2, "s2:\n{s2}").unwrap();
+
+        println!("Result too large, saved in alignment_s1.txt and alignment_s2.txt");
+    } else {
+        println!("s1: {s1}");
+        println!("s2: {s2}");
+        println!("Score: {score}");
+    }
 }
